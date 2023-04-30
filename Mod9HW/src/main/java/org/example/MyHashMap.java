@@ -67,7 +67,7 @@ public class MyHashMap<K, V> {
     }
 
     private static class NodeHash<K, V> {
-        private K key;
+        private final K key;
         private V value;
         private NodeHash<K, V> next;
 
