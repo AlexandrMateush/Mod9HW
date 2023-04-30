@@ -1,18 +1,17 @@
 package org.example;
 
 public class MyQueue<E> {
-    private NodeQ first;
-    private NodeQ last;
+    private NodeQ <E> first;
+    private NodeQ <E> last;
 
     public void add(E value) {
-        NodeQ newNode = new NodeQ(value);
+        NodeQ<E> newNode = new NodeQ<E> (value);
         if (first == null) {
             first = newNode;
-            last = newNode;
         } else {
             last.next = newNode;
-            last = newNode;
         }
+        last = newNode;
     }
 
     public void clear() {
@@ -22,7 +21,7 @@ public class MyQueue<E> {
 
     public int size() {
         int count = 0;
-        NodeQ current = first;
+        NodeQ<E> current = first;
         while (current != null) {
             count++;
             current = current.next;
@@ -30,7 +29,7 @@ public class MyQueue<E> {
         return count;
     }
 
-    public Object peek() {
+    public E peek() {
         if (first == null) {
             return null;
         } else {
@@ -38,11 +37,11 @@ public class MyQueue<E> {
         }
     }
 
-    public Object poll() {
+    public E poll() {
         if (first == null) {
             return null;
         } else {
-            Object value = first.value;
+            E value = first.value;
             first = first.next;
             if (first == null) {
                 last = null;
@@ -50,11 +49,11 @@ public class MyQueue<E> {
             return value;
         }
     }
-    private class NodeQ {
-        Object value;
-        NodeQ next;
+    private static class NodeQ <E> {
+        E value;
+        NodeQ<E> next;
 
-        public NodeQ(Object value) {
+        public NodeQ(E value) {
             this.value = value;
             this.next = null;
         }

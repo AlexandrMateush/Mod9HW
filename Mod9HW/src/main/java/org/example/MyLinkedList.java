@@ -17,12 +17,11 @@ public class MyLinkedList<E> {
         Node<E> newNode = new Node<>(value);
         if (head == null) {
             head = newNode;
-            tail = newNode;
         } else {
             tail.next = newNode;
             newNode.prev = tail;
-            tail = newNode;
         }
+        tail = newNode;
         size++;
     }
 
@@ -66,6 +65,23 @@ public class MyLinkedList<E> {
         }
         return currentNode;
     }
+    public static class Node <E> {
+        E value;
+        Node<E> prev;
+        Node<E> next;
+
+        public Node(E value) {
+            this.value = value;
+            this.prev = null;
+            this.next = null;
+        }
+    }
+
+
+
+
+
+
 
     public static void main(String[] args) {
         LinkedList<String> list = new LinkedList<>();
